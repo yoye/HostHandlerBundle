@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="yoye_host_handler.listener.class">Yoye\Bundle\HostHandlerBundle\EventListener\HostHandlerListener</parameter>
+    </parameters>
+
+    <services>
+        <service id="yoye_host_handler.listener" class="%yoye_host_handler.listener.class%">
+            <argument>%yoye_host_handler.format_request%</argument>
+            <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" />
+        </service>
+    </services>
+    
+</container>
